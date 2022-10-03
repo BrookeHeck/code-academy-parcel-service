@@ -8,8 +8,8 @@ const payload = {
   store: 'store',
   orderId: Math.ceil(Math.random() * 100),
   customer: 'customer',
-  address: 'address'
-}
+  address: 'address',
+};
 
 describe('testing vendor events', () => {
   test('Should log that the vendor has an order ready for pickup', () => {
