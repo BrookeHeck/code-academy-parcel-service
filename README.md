@@ -10,3 +10,4 @@ This is an app that works with event emitters. The events of the driver, who pic
 
 ## Change Log
 - 10/03/2022 - Event emitter that will listen to for driver and vendor events and logs the action and order details
+- 10/04/2022 - Added an event pool that calls event.on to for each event, index file logs all the events in order
