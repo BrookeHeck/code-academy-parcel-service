@@ -1,7 +1,18 @@
 'use strict';
 
-const Events = require('events');
-const events = new Events();
+const eventHub = require('./src/eventHub');
+const events = require('./src/eventEmitter');
 
-module.exports = events;
+eventHub();
+
+const payload = {
+  store: 'store',
+  orderId: Math.ceil(Math.random() * 100),
+  customer: 'customer',
+  address: 'address',
+};
+
+events.emit('pickup', payload);
+events.emit('in-transit', payload);
+events.emit('deliver', payload);
 

@@ -1,7 +1,6 @@
 'use strict';
 
-const events = require('./../index');
-const logEvents = require('./logEvents');
+const events = require('./eventEmitter');
 
 function inTransit(payload) {
   payload.event = 'in-transit';
@@ -17,5 +16,5 @@ function deliver(payload) {
 
 module.exports = {
   inTransit:inTransit,
-  deliver:deliver
-}
+  deliver:deliver,
+};
