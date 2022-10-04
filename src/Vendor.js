@@ -1,10 +1,9 @@
 'use strict';
 
-const events = require('./../index');
-console.log(events.emit);
+const events = require('./eventEmitter');
 
 function pickup(payload) {
-  payload.event = 'pickup'
+  payload.event = 'pickup';
   events.emit('log', payload);
   console.log(`VENDER: ready for pickup, order id: ${payload.orderId}`);
 }
@@ -17,5 +16,5 @@ function deliver(payload) {
 
 module.exports = {
   pickup:pickup,
-  deliver:deliver
-}
+  deliver:deliver,
+};

@@ -1,6 +1,6 @@
 'use strict';
 
-const events = require('./../index');
+const events = require('./../src/eventEmitter');
 const vendor = require('./../src/Vendor');
 const logger = require('./../src/logEvents');
 
@@ -10,6 +10,10 @@ const payload = {
   customer: 'customer',
   address: 'address',
 };
+
+beforeAll(() => {
+  events.on('log', logger);
+});
 
 describe('testing vendor events', () => {
   test('Should log that the vendor has an order ready for pickup', () => {
