@@ -1,13 +1,15 @@
-const payload = {
+const orderDetails = {
   store: 'store',
   orderId: Math.ceil(Math.random() * 100),
   customer: 'customer',
   address: 'address',
+  event: '',
+  message: '',
 };
 
 module.exports = (socket) => {
-  payload.event = 'pickup';
-  socket.emit('log', payload);
-  console.log(`VENDER: ready for pickup, order id: ${payload.orderId}`);
-  socket.emit('pickup', payload);
+  orderDetails.event = 'pickup';
+  orderDetails.message = `${orderDetails.store} has an order ready for pickup, order id: ${orderDetails.orderId}`;
+  socket.emit('log', orderDetails);
+  socket.emit('pickup', orderDetails);
 };

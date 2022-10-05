@@ -9,7 +9,6 @@ const logger = require('./logEvents');
 const caps = server.of('/caps');
 
 caps.on('connection', (socket) => {
-  console.log(`${socket.id}`);
   
   socket.on('log', logger);
 

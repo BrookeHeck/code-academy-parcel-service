@@ -1,8 +1,9 @@
 'use strict';
 
 module.exports = (socket) => (payload) => {
-  payload.event = 'delivered';
+  console.log(payload.message);
+  payload.event = 'received';
+  payload.message = `${payload.store} received order id: ${payload.orderId}`;
   socket.emit('log', payload);
-  console.log(`VENDOR: received order id: ${payload.orderId}`);
   socket.emit('complete', payload);
 };
