@@ -9,6 +9,6 @@ const URI = process.env.URI || 'http://localhost:3002/caps';
 const socket = io.connect(URI);
 
 socket.on('pickup', handlePickup(socket));
-socket.on('complete', handleComplete(socket));
+socket.on('complete', handleComplete);
 
 module.exports = socket;

@@ -1,15 +1,18 @@
+const Chance = require('chance');
+const chance = new Chance();
+
 const orderDetails = {
-  store: 'store',
-  orderId: Math.ceil(Math.random() * 100),
-  customer: 'customer',
-  address: 'address',
+  storeId: chance.guid(),
+  orderId: chance.guid(),
+  customer: chance.name(),
+  address: chance.address(),
   event: '',
   message: '',
 };
 
 module.exports = (socket) => {
   orderDetails.event = 'pickup';
-  orderDetails.message = `${orderDetails.store} has an order ready for pickup, order id: ${orderDetails.orderId}`;
+  orderDetails.message = `${orderDetails.customer.toUpperCase()} has order ready for pickup at ${orderDetails.address} `;
   socket.emit('log', orderDetails);
   socket.emit('pickup', orderDetails);
 };
