@@ -20,3 +20,5 @@ class MessageClient {
     });
   }
 }
+
+module.exports = MessageClient;

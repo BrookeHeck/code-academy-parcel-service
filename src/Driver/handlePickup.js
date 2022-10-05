@@ -2,6 +2,7 @@
 
 module.exports = (socket) => (payload) => {
   console.log(payload.message);
+  socket.emit('join', payload.storeId);
   setTimeout(() => {
     payload.event = 'in-transit';
     payload.message = `DRIVER: Order id ${payload.orderId} is in-transit`;

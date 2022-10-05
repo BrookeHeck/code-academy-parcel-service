@@ -12,18 +12,15 @@ caps.on('connection', async (socket) => {
   
   socket.on('log', logger);
 
-  socket.on('pickup', payload => {
-    socket.join(`${payload.store}`);
-    console.log(`${socket.id}`);
+  socket.on('join', payload => {
+    socket.join(`${payload}`);
+    console.log(`${socket.id} joined ${payload}`);
   });
 
-  socket.on('in-transit', payload => {
-    socket.join(`${payload.store}`);
-    console.log(`${socket.id}`);
-  });
+  socket.on('pickup', payload => socket.broadcast.emit('pickup', payload));
 
   observables.forEach(event => {
-    socket.on(event, (payload) => socket.broadcast.emit(event, payload));
+    socket.on(event, (payload) => socket.to(`${payload.storeId}`).emit(event, payload));
   });
 
 });
