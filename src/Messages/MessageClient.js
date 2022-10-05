@@ -1,6 +1,6 @@
 'use strict';
 
-const io =require('socket.io-client');
+const io = require('socket.io-client');
 
 class MessageClient {
   constructor(clientId, url = 'http://localhost:3002/messages') {

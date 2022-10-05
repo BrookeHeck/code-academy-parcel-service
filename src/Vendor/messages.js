@@ -1,6 +1,6 @@
 'use strict';
 
-const MessageClient = require('./MessageQueue');
+const MessageClient = require('./../Messages/MessageClient');
 
 const messages = new MessageClient('id');
 
@@ -9,5 +9,5 @@ messages.subscribe('received', payload => {
 });
 
 messages.publish('message', {
-  test: 'hello from sender!!',
+  test: 'hell from sender!!',
 });
