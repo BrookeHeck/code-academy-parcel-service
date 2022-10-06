@@ -1,7 +1,17 @@
 'use strict';
 
-module.exports = (socket) => (payload) => {
+const Chance = require('chance');
+const chance = new Chance();
+
+module.exports = (socket, messageClient) => (payload) => {
+
   console.log(payload.message);
+
+  const driverId = chance.guid();
+  payload.driverId = driverId;
+  
+  socket.emit('join', payload.storeId);
+  socket.emit('join', driverId);
   setTimeout(() => {
     payload.event = 'in-transit';
     payload.message = `DRIVER: Order id ${payload.orderId} is in-transit`;
@@ -14,5 +24,6 @@ module.exports = (socket) => (payload) => {
     payload.message = `DRIVER: Order id ${payload.orderId} has been delivered`;
     socket.emit('log', payload);
     socket.emit('deliver', payload);
+    messageClient.publish('message-vendor', payload);
   }, 6000);
 };

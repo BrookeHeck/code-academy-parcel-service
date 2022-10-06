@@ -1,6 +1,5 @@
 'use strict';
 
-module.exports = (socket) => (payload) => {
-  socket.emit('log', payload);
+module.exports = (payload) => {
   console.log(payload.message);
 };
