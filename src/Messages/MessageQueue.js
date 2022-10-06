@@ -26,6 +26,7 @@ class MessageQueue {
 
   get(clientId) {
     try {
+      console.log(this.messages);
       return Object.keys(this.messages[clientId]).map(messageId => ({
         messageId: messageId,
         payload: this.messages[clientId][messageId],

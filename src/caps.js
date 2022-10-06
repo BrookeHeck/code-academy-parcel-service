@@ -1,7 +1,12 @@
 'use strict';
 
-const server = require('./sender');
+const server = require('./server');
 const logger = require('./logEvents');
+const MessageQueue = require('./Messages/MessageQueue');
+
+// this is an object that holds all the queues
+// it starts wit only a driver queue
+const queues = require('./Messages/queues');
 
 const observables = ['in-transit', 'deliver', 'complete'];
 
@@ -13,6 +18,7 @@ caps.on('connection', async (socket) => {
 
   socket.on('join', payload => {
     socket.join(payload);
+    queues[payload] = new MessageQueue();
     console.log(`${socket.id} joined ${payload}`);
   });
 

@@ -1,7 +1,7 @@
 'use strict';
 
 const server = require('./server');
-const VendorQueues = require('./../src/Vendor/VendorQueues');
+const VendorQueues = require('./Messages/queues');
 
 
 const messages = server.of('messages');

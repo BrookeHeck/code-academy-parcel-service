@@ -1,4 +1,4 @@
 'use strict';
 
-const caps = require('./src/server');
+const server = require('./src/server');
 
